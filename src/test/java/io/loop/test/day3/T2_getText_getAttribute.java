@@ -10,7 +10,7 @@ public class T2_getText_getAttribute {
     /*
     go to url: https://loopcamp.vercel.app/registration_form.html
     verify header text expected:  Registration form
-    verify placeholder attribute value expected - username
+    verify placeholder attribute value expected - firstname
      */
     public static void main(String[] args) {
 
@@ -31,8 +31,20 @@ public class T2_getText_getAttribute {
             System.err.println("Expected header for form: \"" + LoopCampConstants.EXPECTED_HEADER_FOR_FORM + "\" , does not match actual header: \"" + actualHeaderForForm + "\" => TEST FAILED" );
         }
 
+        WebElement firstNamePlaceholder = driver.findElement(By.name("firstname"));
+        String actualPlaceHolderForFirstName =  firstNamePlaceholder.getAttribute("placeholder");
+
+        //System.out.println("actualPlaceHolderForUserName " + actualPlaceHolderForUserName);
+
+        if (actualPlaceHolderForFirstName.equals(LoopCampConstants.EXPECTED_PLACE_HOLDER_FIRSTNAME)) {
+            System.out.println("Expected placeholder matches with actual");
+            System.out.println("TEST PASSED");
 
 
+        }else{
+            System.out.println("Expected placeholder DOES NOT match with actual");
+            System.err.println("TEST FAILED");
+        }
 
     }
 }
