@@ -27,9 +27,27 @@ public class T3_webTables extends TestBase {
         String expectedFullName = "Alex De Souza";
         String actualFullName = DocuportWebTableUtils.returnAnyField(driver, "alex.de.souza@gmail.com", "Full name");
         assertEquals(actualFullName, expectedFullName, "Actual does not match the expected");
-
         System.out.println("actualFullName = " + actualFullName);
 
+        String expectedUserName = "alexdesouze";
+        String actualUserName = DocuportWebTableUtils.returnAnyField(driver, "alex.de.souza@gmail.com", "Username");
+        assertEquals(actualUserName, expectedUserName, "Actual does not match the expected");
+        System.out.println("actualUserName = " + actualUserName);
+
+        String expectedPhoneNumber = "+994512060042";
+        String actualPhoneNumber = DocuportWebTableUtils.returnAnyField(driver, "alex.de.souza@gmail.com", "Phone number");
+        assertEquals(actualPhoneNumber, expectedPhoneNumber, "Actual does not match the expected");
+        System.out.println("actualPhoneNumber = " + actualPhoneNumber);
+
+        String expectedRole = "Client";
+        String actualRole = DocuportWebTableUtils.returnAnyField(driver, "alex.de.souza@gmail.com", "Role");
+        assertEquals(actualRole, expectedRole, "Actual does not match the expected");
+        System.out.println("actualRole = " + actualRole);
+
+        String expectedAdvisor = "Batch1 Group1";
+        String actualAdvisor = DocuportWebTableUtils.returnAnyField(driver, "alex.de.souza@gmail.com", "Advisor");
+        assertEquals(actualAdvisor, expectedAdvisor, "Actual does not match the expected");
+        System.out.println("actualAdvisor = " + actualAdvisor);
 
     }
 }
