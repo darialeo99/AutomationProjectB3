@@ -3,6 +3,7 @@ package io.loop.test.day9;
 import io.loop.pages.LoopPracticeDragDropPage;
 import io.loop.test.utilities.Driver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
@@ -51,6 +52,41 @@ public class T4_drag_and_drop_POM {
         String  actual = loopPracticeDragDropPage.bigCircle.getText();
         assertEquals(actual, expected, "Actual does not match the expected");
 
+    }
+
+    @Test
+    public void drop_here_test() {
+        actions.moveToElement(loopPracticeDragDropPage.smallCircle)
+                .clickAndHold()
+                .moveByOffset(100,100)
+                .pause(3000)
+                .perform();
+        assertEquals(loopPracticeDragDropPage.bigCircle.getText(), "Drop here.");
+    }
+
+    @Test
+    public void drop_now_test() {
+        actions.moveToElement(loopPracticeDragDropPage.smallCircle)
+                .clickAndHold()
+                .moveByOffset(0,-200)
+                .pause(3000)
+                .perform();
+        assertEquals(loopPracticeDragDropPage.bigCircle.getText(), "Now drop...");
+    }
+
+    @Test
+    public void drag_anywhere_test (){
+        actions.moveToElement(loopPracticeDragDropPage.smallCircle)
+                .clickAndHold()
+                .moveByOffset(100,250)
+                .release()
+                .perform();
+        assertEquals(loopPracticeDragDropPage.bigCircle.getText(), "Try again!");
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        Driver.closeDriver();
     }
 
 }
